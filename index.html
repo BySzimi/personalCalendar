@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A personal calendar for appointments, duties, notes and tasks.">
+  <title>My Calendar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="calendar-logo" aria-hidden="true">▣</div>
+        <div>
+          <h1>My Calendar</h1>
+          <p>Plan · Organise · Get things done</p>
+        </div>
+      </div>
+
+      <div class="calendar-controls">
+        <button id="todayBtn" class="control-btn">Today</button>
+        <button id="prevMonthBtn" class="round-btn" aria-label="Previous month">‹</button>
+        <h2 id="monthTitle">September 2026</h2>
+        <button id="nextMonthBtn" class="round-btn" aria-label="Next month">›</button>
+      </div>
+
+      <button id="addBtn" class="add-btn">＋ Add</button>
+    </header>
+
+    <main class="main-layout">
+      <section class="calendar-panel">
+        <div class="weekdays" aria-hidden="true">
+          <div>Monday</div>
+          <div>Tuesday</div>
+          <div>Wednesday</div>
+          <div>Thursday</div>
+          <div>Friday</div>
+          <div>Saturday</div>
+          <div>Sunday</div>
+        </div>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+
+        <div class="legend">
+          <span><i class="dot work"></i> Work</span>
+          <span><i class="dot personal"></i> Personal</span>
+          <span><i class="dot appointment"></i> Appointment</span>
+          <span><i class="dot important"></i> Important</span>
+          <span><i class="dot youtube"></i> YouTube</span>
+        </div>
+      </section>
+
+      <aside class="details-panel">
+        <div class="details-header">
+          <h3 id="selectedDateTitle">Select a day</h3>
+          <button id="closeDetailsBtn" class="close-btn" aria-label="Close details">×</button>
+        </div>
+
+        <div id="editorArea" class="editor-area">
+          <textarea id="dayNotes" placeholder="Write your notes, appointments, duties or anything else here..."></textarea>
+          <div class="save-status" id="saveStatus">Saved automatically</div>
+
+          <div class="quick-actions">
+            <h4>Quick actions</h4>
+            <button data-category="work"><i class="dot work"></i>Add work event</button>
+            <button data-category="personal"><i class="dot personal"></i>Add personal event</button>
+            <button data-category="appointment"><i class="dot appointment"></i>Add appointment</button>
+            <button data-category="important"><i class="dot important"></i>Add important</button>
+            <button data-category="youtube"><i class="dot youtube"></i>Add YouTube</button>
+          </div>
+
+          <div class="month-summary">
+            <h4>This month</h4>
+            <div class="summary-box">
+              <div><span>▣</span><span>Appointments</span><strong id="appointmentCount">0</strong></div>
+              <div><span>☑</span><span>Tasks</span><strong id="taskCount">0</strong></div>
+              <div><span>★</span><span>Important</span><strong id="importantCount">0</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="footer-quote">Small steps make big days ♡</p>
+      </aside>
+    </main>
+  </div>
+
+  <div id="addModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add to calendar</h3>
+        <button id="modalCloseBtn" class="close-btn" aria-label="Close">×</button>
+      </div>
+      <label>
+        Date
+        <input id="eventDate" type="date">
+      </label>
+      <label>
+        Category
+        <select id="eventCategory">
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="appointment">Appointment</option>
+          <option value="important">Important</option>
+          <option value="youtube">YouTube</option>
+        </select>
+      </label>
+      <label>
+        Note
+        <textarea id="eventText" rows="5" placeholder="e.g. Dentist — 10:30"></textarea>
+      </label>
+      <button id="saveEventBtn" class="add-btn full-width">Save</button>
+    </div>
+  </div>
+
+  <script src="calendar.js"></script>
+</body>
+</html>
